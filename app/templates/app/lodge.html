@@ -1,0 +1,41 @@
+{% extends "app/dash_base.html" %}
+
+{% load static %}
+
+{% block title %}Report a Problem{% endblock %}
+
+{% block content %}
+    <form class="p-6 w-full mx-auto flex flex-col border border-secondary rounded-xl shadow-lg" action="{% url 'report_a_problem' %}" method="post">
+        {% csrf_token %}
+        {% if not request.user.handler %}
+           <label class="text-gray-600" for="category">Category</label>
+            <select name="category" id="category" class="p-2 mb-4 border border-gray-500 rounded">
+                <option value="Academic">Academic</option>
+                <option value="Administrative">Administrative</option>
+                <option value="Campus Facilities">Campus Facilities</option>
+                <option value="Examination and Evaluation">Examination & Evaluation</option>
+                <option value="Hostel and Accommodation">Hostel & Accommodation</option>
+                <option value="Library Services">Library Services</option>
+                <option value="IT and Technical Support">IT & Technical Support</option>
+                <option value="Fees and Payments">Fees & Payments</option>
+                <option value="Scholarship and Financial Aid">Scholarship & Financial Aid</option>
+                <option value="Transportation">Transportation</option>
+                <option value="Disciplinary Issues">Disciplinary Issues</option>
+                <option value="Harassment or Misconduct">Harassment or Misconduct</option>
+                <option value="Health and Safety">Health & Safety</option>
+                <option value="Staff or Faculty Conduct">Staff/Faculty Conduct</option>
+                <option value="Extracurricular Activities">Extracurricular Activities</option>
+                <option value="Placements and Internships">Placements & Internships</option>
+                <option value="Other">Other</option>
+            </select>
+
+            <label class="text-gray-600" for="about">About</label>
+            <input type="text" name="about" id="about" class="p-2 mb-4 border border-gray-500 rounded" required>
+            <label class="text-gray-600" for="details">Details</label>
+            <textarea name="details" id="details" rows="5" class="p-2 mb-4 border border-gray-500 rounded" required></textarea>
+            <input type="submit" class="p-3 border border-gray-200 bg-primary hover:bg-primary-dark rounded mx-auto text-white" value="Submit">
+        {% else %}
+            <p>You are not authorized to lodge a grievance.</p>
+        {% endif %}
+    </form>
+{% endblock %}

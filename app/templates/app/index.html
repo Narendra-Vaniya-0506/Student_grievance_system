@@ -1,0 +1,74 @@
+{% extends "app/layout.html" %}
+
+{% load static %}
+
+{% block title %}Welcome{% endblock %}
+
+{% block body %}
+<div class="max-w-7xl mx-auto mt-20 px-6">
+  <!-- Hero Section -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center bg-white rounded-lg shadow-lg p-12">
+    <div>
+      <h1 class="text-5xl font-semibold text-primary mb-6 leading-tight"><b>Your Voice Matters<b/>, </h1>
+      <h2 class="text-3xl font-semibold text-primary mb-4 leading-tight">Register and Track Student Grievances Effortlessly</h2>
+      <p class="text-lg text-body mb-8"><b>The Student Grievance System<b/> is designed to ensure every student’s concern is heard and addressed with fairness, transparency, and care. Whether you’re facing academic challenges, administrative issues, or campus related difficulties, our platform makes it simple to submit a grievance and monitor its progress all in one place.</p>
+      <p class="text-lg text-body mb-8">We’re committed to creating a supportive and accountable environment where every student feels respected and empowered.<p/>
+      <div class="flex space-x-6">
+        <a href="{% if user.is_authenticated %}{% url 'register_grievance' %}{% else %}{% url 'login' %}{% endif %}" class="btn-primary"> 
+          {% if request.user.handler %}
+            See All Grievances
+          {% else %}
+            Register Grievance
+          {% endif %}
+        </a>
+        <a href="{% url 'track_grievance' %}" class="btn-primary bg-secondary hover:bg-secondary-dark text-white">Track a Grievance</a>
+      </div>
+    </div>
+    <div>
+      <img src="{% static 'images/1st-image.png' %}" alt="Grievance Support Illustration" class="w-full rounded-lg shadow-md" />
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-16">
+    <div class="card p-8">
+      <h2 class="text-3xl font-semibold text-primary mb-4 leading-tight">About the Student Grievance Redressal Portal</h2>
+      <p class="text-body mb-6">Welcome to the Student Grievance Redressal Portal a secure, transparent, and student centered platform dedicated to ensuring your concerns are heard, addressed, and resolved efficiently.
+We understand that open communication is essential for a healthy campus environment. This portal is designed to empower students, promote accountability, and encourage positive change across the institution through a fair and responsive grievance process.</p>
+      <h3 class="text-2xl font-semibold text-primary mb-3 leading-tight">Our Mission</h3>
+      <p class="text-body">Our mission is to provide every student with a simple, reliable, and user-friendly way to voice their concerns with confidence.</p>
+      <p class="text-body">We are committed to the values of fairness, transparency, and timely resolution, ensuring that each grievance is handled with care and integrity.</p>
+      <p class="text-body">By leveraging technology, we aim to make the grievance redressal process more accessible, efficient, and student-focused fostering trust and continuous improvement within our academic community.</p>
+
+    </div>
+    <div>
+      <img src="{% static 'images/2nd-image.png' %}" alt="Questions Illustration" class="w-full rounded-lg shadow-md" />
+    </div>
+  </section>
+
+  <!-- About the Developer Section -->
+  <section class="card p-8 mt-16 text-center">
+    <h2 class="text-4xl font-semibold text-primary mb-8">About the Developer</h2>
+    <div class="flex justify-center space-x-6 mb-8">
+      <img src="{% static 'images/Developer.jpg' %}" alt="Developer Photo" class="w-32 h-32 rounded-full object-cover" />
+      <img src="{% static 'images/Developer1.jpg' %}" alt="Developer Photo 2" class="w-32 h-32 rounded-full object-cover" />
+    </div>
+    <div class="space-y-4 max-w-4xl mx-auto">
+      <p class="text-body">Hi, we're Narendra Vaniya and Shreya Vaghela, the developers behind the Student Grievance System. We are passionate about building systems that combine technology and purpose to solve real problems. Through this project, we aimed to design a platform that empowers students, strengthens transparency, and showcases our skills in web development, database management, and UI design.</p>
+      
+      <p class="text-body">This project represents not just my technical abilities, but also my belief that meaningful innovation starts with listening to people’s needs and creating something that genuinely helps.</p>
+      <div class="mt-6 text-center">
+        <h3 class="text-2xl font-semibold text-primary mb-4">Connect with us:</h3>
+        <p class="text-body mb-2">Narendra Vaniya: 
+          <a href="https://github.com/Narendra-Vaniya-0506" target="_blank" class="link-secondary hover:underline">GitHub</a> | 
+          <a href="https://www.linkedin.com/in/narendra-vaniya1617/" target="_blank" class="link-secondary hover:underline">LinkedIn</a>
+        </p>
+        <p class="text-body">Shreya Vaghela: 
+          <a href="https://github.com/shreyavaghela1826" target="_blank" class="link-secondary hover:underline">GitHub</a> | 
+          <a href="https://www.linkedin.com/in/shreyavaghela65/" target="_blank" class="link-secondary hover:underline">LinkedIn</a>
+        </p>
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

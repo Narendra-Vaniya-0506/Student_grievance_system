@@ -1,0 +1,115 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>{% block title %}{% endblock %} Student Grievance Portal</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+            tailwind.config = {
+                theme: {
+                    extend: {
+                        fontFamily: {
+                            'inter': ['Inter', 'sans-serif'],
+                        },
+                        colors: {
+                            primary: '#2C3E50',
+                            secondary: '#18BC9C',
+                            background: '#F8F9FA',
+                            card: '#FFFFFF',
+                            text: {
+                                heading: '#2C3E50',
+                                body: '#555555',
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
+        <style>
+            body {
+                font-family: 'Inter', sans-serif;
+                background-color: #F8F9FA;
+                color: #555555;
+            }
+            .card {
+                background-color: #FFFFFF;
+                border-radius: 8px;
+                box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .btn-primary {
+                background-color: #2C3E50;
+                color: #FFFFFF;
+                padding: 0.5rem 1rem;
+                border-radius: 4px;
+                transition: background-color 0.3s;
+            }
+            .btn-primary:hover {
+                background-color: #1a252f;
+            }
+            .link-secondary {
+                color: #18BC9C;
+                text-decoration: none;
+            }
+            .link-secondary:hover {
+                text-decoration: underline;
+            }
+            h1, h2, h3, h4, h5, h6 {
+                color: #2C3E50;
+            }
+        </style>
+    </head>
+    <body class="flex flex-col justify-between h-screen">
+            <nav class="px-12 py-4 flex justify-between items-center border-b border-gray-300 fixed right-0 left-0 top-0 bg-white shadow-lg" style="color: #2C3E50; font-family: 'Inter', sans-serif;">
+            <a class="text-3xl font-semibold flex items-center" href="/" style="color: #2C3E50;">
+            <img class="w-16 mr-3" src="{% static 'images/logo1.png' %}" alt="Logo" />
+              Student Grievance Portal
+            </a>
+
+            <div>
+              <ul class="flex space-x-8 text-lg font-medium">
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="p-2 border-b-2 border-transparent hover:border-secondary transition-colors" href="#" style="color: #2C3E50;"><strong>Welcome, {{ user.username }}</strong></a>
+                    </li>
+                {% endif %}
+                {% if user.is_superuser %}
+                    <a href="/admin" class="link-secondary font-semibold hover:underline">Admin Panel</a>
+                {% endif %}
+                {% if user.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="link-secondary font-semibold hover:underline" href="{% url 'logout' %}">Log Out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="link-secondary font-semibold hover:underline" href="{% url 'login' %}">Log In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="link-secondary font-semibold hover:underline" href="{% url 'register' %}">Register</a>
+                    </li>
+                {% endif %}
+              </ul>
+            </div>
+          </nav>
+        
+        <div class="body card-bg p-6 rounded-lg shadow-md">
+            {% block body %}
+            {% endblock %}
+        </div>
+        {% block footer %}
+        <footer class="mt-20 px-12 py-6 flex justify-between border-t border-gray-300 static bottom-0 bg-white shadow-lg" style="color: #2C3E50; font-family: 'Inter', sans-serif;">
+            <a href="https://code-yatra-pi.vercel.app/" target="_blank" class="text-lg link-secondary flex items-center font-medium hover:underline">
+              Made by Code Yatra
+            </a>
+            <p class="text-sm text-gray-600">&copy; 2025 Student Grievance Portal. All rights reserved.</p>
+            <div>
+              <a href="#" class="link-secondary hover:underline mx-2">Privacy Policy</a>
+              <a href="#" class="link-secondary hover:underline mx-2">Terms of Service</a>
+            </div>
+        </footer>
+        {% endblock %}
+    </body>
+</html>
