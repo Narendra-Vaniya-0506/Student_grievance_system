@@ -6,7 +6,6 @@ A simple portal for grievance redressal made using Django.
 
 - Python 3.x
 - Django
-- Virtual environment tool (optional but recommended)
 
 # Functionalities
 
@@ -22,25 +21,14 @@ To run this Django app locally on your machine follow the steps below:
 
 1. **Clone the Repository**:
    ```sh
-   git clone https://github.com/
+   gh repo clone Narendra-Vaniya-0506/Student_grievance_system
 
 2. **Navigate to the Repository**:
    ```sh
    cd Student_grievance_system
    ```
 
-3. **Create and activate a virtual environment**
-   ```sh
-   # For Linux
-   python3 -m venv venv
-   source venv/bin/activate
-
-   # For Windows
-   python -m venv venv
-   source venv/Scripts/activate
-   ```
-
-4. **Run the application**
+3. **Run the application**
    ```sh
    pip install django
    python manage.py migrate
@@ -56,10 +44,10 @@ This project was developed by Narendra Vaniya and Shreya Vaghela.
 
 - Narendra Vaniya: 
   - GitHub: https://github.com/Narendra-Vaniya-0506
-  - LinkedIn: https://www.linkedin.com/in/narendra-vaniya-0506/
+  - LinkedIn: https://www.linkedin.com/in/narendra-vaniya1617
 
 - Shreya Vaghela:
-  - GitHub: https://github.com/shreyavaghela
-  - LinkedIn: https://www.linkedin.com/in/shreya-vaghela/
+  - GitHub: https://github.com/shreyavaghela1826
+  - LinkedIn: https://www.linkedin.com/in/shreyavaghela65
 
 We are passionate about building systems that combine technology and purpose to solve real problems. This project represents our commitment to creating platforms that empower users and promote transparency.
