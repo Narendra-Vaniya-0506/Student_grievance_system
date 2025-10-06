@@ -147,7 +147,7 @@ def get_more_help(request):
             "message": "Successfully Requested More Help."
         })
     else:
-        return render(request, 'app/escalate.html')
+        return render(request, 'app/get_more_help.html')
 
 def grievance_detail(request, ref_no):
     grievance_obj = Grievance.objects.get(ref_no=ref_no)
